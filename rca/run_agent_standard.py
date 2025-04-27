@@ -95,8 +95,9 @@ def main(args, uid, dataset):
             promptfile = f"{unique_obs_path}/prompt/{uuid}.json"
             logfile = f"{unique_obs_path}/history/{uuid}.log"
             logger.remove()
-            logger.add(sys.stdout, colorize=True, enqueue=True, level="INFO")
-            logger.add(logfile, colorize=True, enqueue=True, level="INFO")
+            logger.level("DEBUG", color="<green>")
+            logger.add(sys.stdout, colorize=True, enqueue=True, level="DEBUG")
+            logger.add(logfile, colorize=False, enqueue=False, level="DEBUG")
             logger.debug('\n' + "#"*80 + f"\n{uuid}: {task_index}\n" + "#"*80)
             try: 
                 signal.alarm(args.timeout)
@@ -166,7 +167,7 @@ def main(args, uid, dataset):
 
 
 if __name__ == "__main__":
-    
+
     uid = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=str, default="Market/cloudbed-1")

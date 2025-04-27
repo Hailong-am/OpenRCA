@@ -84,7 +84,7 @@ def AWS_bedrock_completion(messages, temperature):
             modelId=configs["MODEL"],
             body=json.dumps({
                 "anthropic_version": "bedrock-2023-05-31",
-                "max_tokens": 10000,
+                "max_tokens": 100000,
                 "temperature": temperature,
                 "messages": bedrock_message
             })
